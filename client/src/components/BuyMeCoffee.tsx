@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 interface BuyMeCoffeeProps {
   username: string;
@@ -6,6 +6,18 @@ interface BuyMeCoffeeProps {
 
 const BuyMeCoffee: FC<BuyMeCoffeeProps> = ({ username }) => {
   const buyMeACoffeeUrl = `https://www.buymeacoffee.com/${username}`;
+  const [isHovered, setIsHovered] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+  
+  // Periodically animate the button to draw attention
+  useEffect(() => {
+    const animationInterval = setInterval(() => {
+      setIsAnimated(true);
+      setTimeout(() => setIsAnimated(false), 1000);
+    }, 10000);
+    
+    return () => clearInterval(animationInterval);
+  }, []);
   
   return (
     <div className="fixed bottom-4 right-4 z-50">
@@ -13,15 +25,25 @@ const BuyMeCoffee: FC<BuyMeCoffeeProps> = ({ username }) => {
         href={buyMeACoffeeUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-medium px-4 py-2 rounded-full shadow-lg transition-all hover:shadow-xl transform hover:scale-105"
+        className={`
+          flex items-center gap-2 
+          bg-gradient-to-r from-yellow-500 to-amber-500 
+          hover:from-yellow-600 hover:to-amber-600
+          text-white font-medium px-4 py-2 rounded-full 
+          shadow-lg transition-all duration-300 hover:shadow-xl 
+          ${isHovered || isAnimated ? 'translate-y-[-4px]' : ''}
+        `}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
-          width="16" 
-          height="16" 
+          width="20" 
+          height="20" 
           viewBox="0 0 24 24" 
           fill="currentColor" 
           stroke="none"
+          className={`transition-transform duration-300 ${isHovered ? 'rotate-12' : ''}`}
         >
           <path d="M7.5 4C7.5 4 6.5 4 6.5 3C6.5 2 7.5 2 7.5 2H19.5C19.5 2 20.5 2 20.5 3C20.5 4 19.5 4 19.5 4H7.5Z"/>
           <path d="M8.5 12V12C8.5 10.4087 9.13214 8.88258 10.2574 7.75736L10.5 7.5C11.6652 6.33481 11.6652 4.46519 10.5 3.3L10.5 3.3"/>
@@ -30,7 +52,9 @@ const BuyMeCoffee: FC<BuyMeCoffeeProps> = ({ username }) => {
           <path d="M12 18V21"/>
           <path d="M9 21H15"/>
         </svg>
-        Buy me a coffee
+        <span className={`${isHovered ? 'ml-1' : ''} transition-all duration-300`}>
+          Buy me a coffee
+        </span>
       </a>
     </div>
   );
