@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FocusShield</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 320px;
+      color: #1F2937;
+      background-color: #F9FAFB;
+    }
+    
+    .header {
+      background-color: #2563EB;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background-color: white;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2563EB;
+    }
+    
+    .logo-text {
+      margin-left: 8px;
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+    }
+    
+    .status-badge {
+      background-color: #10B981;
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 8px;
+      border-radius: 9999px;
+    }
+    
+    .settings-container {
+      padding: 16px;
+    }
+    
+    .setting-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    
+    .setting-item:last-child {
+      border-bottom: none;
+    }
+    
+    .setting-label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #4B5563;
+    }
+    
+    .progress-section {
+      margin-top: 12px;
+    }
+    
+    .progress-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    
+    .progress-label {
+      font-size: 12px;
+      color: #6B7280;
+    }
+    
+    .progress-value {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2563EB;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background-color: #E5E7EB;
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background-color: #2563EB;
+      border-radius: 9999px;
+    }
+    
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background-color: #F3F4F6;
+      border-top: 1px solid #E5E7EB;
+    }
+    
+    .footer-button {
+      font-size: 14px;
+      font-weight: 500;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    
+    .footer-button i {
+      margin-right: 4px;
+    }
+    
+    .footer-button.primary {
+      color: #2563EB;
+    }
+    
+    .footer-button.danger {
+      color: #DC2626;
+    }
+    
+    /* Toggle Switch */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 20px;
+    }
+    
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #E5E7EB;
+      transition: .4s;
+      border-radius: 20px;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .slider {
+      background-color: #2563EB;
+    }
+    
+    input:checked + .slider:before {
+      transform: translateX(16px);
+    }
+    
+    .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <div class="logo-text">FocusShield</div>
+    </div>
+    <div class="status-badge">
+      <span id="status-text">Active</span>
+    </div>
+  </div>
+  
+  <div class="settings-container">
+    <div class="setting-item">
+      <div class="setting-label">Website Filtering</div>
+      <label class="switch">
+        <input type="checkbox" id="website-filtering" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="setting-item">
+      <div class="setting-label">Image Filtering</div>
+      <label class="switch">
+        <input type="checkbox" id="image-detection" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="setting-item">
+      <div class="setting-label">VPN Detection</div>
+      <label class="switch">
+        <input type="checkbox" id="vpn-detection" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    
+    <div class="progress-section">
+      <div class="progress-header">
+        <div class="progress-label">Day streak</div>
+        <div class="progress-value" id="days-clean">12 days</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-bar" style="width: 40%"></div>
+      </div>
+    </div>
+    
+    <div class="setting-item" style="margin-top: 12px; border-top: 1px solid #E5E7EB; padding-top: 12px;">
+      <button id="advanced-settings" class="footer-button" style="color: #6B7280;">
+        <i class="fas fa-cog"></i> Advanced Settings
+      </button>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <button id="open-dashboard" class="footer-button primary">
+      <i class="fas fa-external-link-alt"></i> Dashboard
+    </button>
+    <button id="enable-strict-mode" class="footer-button danger">
+      <i class="fas fa-lock"></i> Lock Mode
+    </button>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
