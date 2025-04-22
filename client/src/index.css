@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  /* Light mode - Islamic theme colors */
   --background: 210 40% 98%;
   --foreground: 222 47% 11%;
   --muted: 210 40% 96%;
@@ -13,18 +14,22 @@
   --card-foreground: 222 47% 11%;
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --primary: 221 83% 53%;
+  /* Islamic green */
+  --primary: 142 76% 36%; 
   --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96%;
   --secondary-foreground: 222 47% 11%;
-  --accent: 210 40% 96%;
+  /* Gold accent */
+  --accent: 45 93% 47%;
   --accent-foreground: 222 47% 11%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 221 83% 53%;
+  --ring: 142 76% 36%;
   --radius: 0.75rem;
 }
-  .dark {
+
+.dark {
+  /* Dark mode - Islamic theme colors */
   --background: 222 47% 11%;
   --foreground: 210 40% 98%;
   --muted: 217 33% 17%;
@@ -35,15 +40,17 @@
   --card-foreground: 210 40% 98%;
   --border: 217 33% 17%;
   --input: 217 33% 17%;
-  --primary: 221 83% 53%;
+  /* Islamic green - darker for dark mode */
+  --primary: 142 62% 42%;
   --primary-foreground: 210 40% 98%;
   --secondary: 217 33% 17%;
   --secondary-foreground: 210 40% 98%;
-  --accent: 217 33% 17%;
+  /* Gold accent - darker for dark mode */
+  --accent: 45 80% 45%;
   --accent-foreground: 210 40% 98%;
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
-  --ring: 224 76% 48%;
+  --ring: 142 62% 42%;
   --radius: 0.75rem;
 }
 
@@ -61,7 +68,7 @@
   }
   
   h1 {
-    @apply text-3xl lg:text-4xl bg-gradient-to-r from-primary to-blue-700 bg-clip-text text-transparent;
+    @apply text-3xl lg:text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
   }
   
   h2 {
