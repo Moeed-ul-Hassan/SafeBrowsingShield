@@ -13,6 +13,7 @@ import Motivation from "@/pages/Motivation";
 import Sidebar from "@/components/Sidebar";
 import BlockedOverlay from "@/components/BlockedOverlay";
 import VpnDetectedOverlay from "@/components/VpnDetectedOverlay";
+import BuyMeCoffee from "@/components/BuyMeCoffee";
 
 function Router() {
   const [location] = useLocation();
@@ -54,6 +55,9 @@ function Router() {
       {/* Overlays */}
       {showBlockedOverlay && <BlockedOverlay onClose={() => setShowBlockedOverlay(false)} />}
       {showVpnOverlay && <VpnDetectedOverlay onClose={() => setShowVpnOverlay(false)} />}
+      
+      {/* Buy Me A Coffee button */}
+      <BuyMeCoffee username="moeedulhassan" />
     </div>
   );
 }
