@@ -14,6 +14,7 @@ import Sidebar from "@/components/Sidebar";
 import BlockedOverlay from "@/components/BlockedOverlay";
 import VpnDetectedOverlay from "@/components/VpnDetectedOverlay";
 import BuyMeCoffee from "@/components/BuyMeCoffee";
+import Watermark from "@/components/Watermark";
 
 function Router() {
   const [location] = useLocation();
@@ -38,7 +39,7 @@ function Router() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row">
+    <div className="min-h-screen flex flex-col md:flex-row bg-gradient-to-br from-slate-50 to-slate-100">
       <Sidebar activePath={location} />
       <main className="flex-1">
         <Switch>
@@ -58,6 +59,9 @@ function Router() {
       
       {/* Buy Me A Coffee button */}
       <BuyMeCoffee username="moeedulhassan" />
+      
+      {/* Watermark */}
+      <Watermark />
     </div>
   );
 }

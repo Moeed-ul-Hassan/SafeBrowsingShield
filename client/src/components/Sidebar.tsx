@@ -10,23 +10,26 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
   const isActive = (path: string) => {
     return activePath === path || 
            (path === '/dashboard' && activePath === '/') ? 
-           "flex items-center px-4 py-3 rounded-md bg-primary-50 text-primary-700 font-medium" : 
-           "flex items-center px-4 py-3 rounded-md text-slate-600 hover:bg-slate-50 font-medium";
+           "flex items-center px-4 py-3 rounded-lg bg-gradient-to-r from-primary/10 to-blue-500/10 text-primary font-medium border-l-4 border-primary shadow-sm" : 
+           "flex items-center px-4 py-3 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-primary transition-all duration-200 font-medium";
   };
 
   return (
-    <aside className="w-full md:w-64 bg-white border-r border-slate-200 h-auto md:h-screen flex-shrink-0">
+    <aside className="w-full md:w-64 bg-white border-r border-slate-200 h-auto md:h-screen flex-shrink-0 shadow-sm">
       <div className="p-6">
         <div className="flex items-center mb-8">
-          <div className="h-8 w-8 rounded-md bg-primary-600 flex items-center justify-center text-white">
-            <i className="fas fa-shield-alt"></i>
+          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white shadow-md">
+            <i className="fas fa-shield-alt text-xl"></i>
           </div>
-          <h1 className="ml-3 text-xl font-bold text-slate-800">FocusShield</h1>
+          <div className="ml-3">
+            <h1 className="text-xl font-bold">FocusShield</h1>
+            <div className="text-xs text-slate-500">Freedom from addiction</div>
+          </div>
         </div>
 
-        <nav>
+        <nav className="space-y-2">
           <ul>
-            <li className="mb-1">
+            <li>
               <Link href="/dashboard">
                 <a className={isActive('/dashboard')}>
                   <i className="fas fa-home w-5"></i>
@@ -34,7 +37,7 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
                 </a>
               </Link>
             </li>
-            <li className="mb-1">
+            <li>
               <Link href="/protection">
                 <a className={isActive('/protection')}>
                   <i className="fas fa-shield-alt w-5"></i>
@@ -42,7 +45,7 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
                 </a>
               </Link>
             </li>
-            <li className="mb-1">
+            <li>
               <Link href="/accountability">
                 <a className={isActive('/accountability')}>
                   <i className="fas fa-user-friends w-5"></i>
@@ -50,7 +53,7 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
                 </a>
               </Link>
             </li>
-            <li className="mb-1">
+            <li>
               <Link href="/statistics">
                 <a className={isActive('/statistics')}>
                   <i className="fas fa-chart-line w-5"></i>
@@ -58,7 +61,7 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
                 </a>
               </Link>
             </li>
-            <li className="mb-1">
+            <li>
               <Link href="/motivation">
                 <a className={isActive('/motivation')}>
                   <i className="fas fa-trophy w-5"></i>
@@ -70,7 +73,7 @@ const Sidebar: FC<SidebarProps> = ({ activePath }) => {
         </nav>
       </div>
 
-      <div className="border-t border-slate-200 p-6">
+      <div className="border-t border-slate-200 p-6 bg-slate-50/50">
         <DaysCleanTracker />
       </div>
     </aside>
