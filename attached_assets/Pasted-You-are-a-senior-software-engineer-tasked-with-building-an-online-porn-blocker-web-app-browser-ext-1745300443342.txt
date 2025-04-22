@@ -1,0 +1,74 @@
+You are a senior software engineer tasked with building an online porn blocker web app + browser extension that helps people overcome porn addiction. This blocker should be intelligent, tamper-resistant, and able to detect VPN usage. The tech stack is: HTML, CSS, JavaScript (Vanilla or React), NSFW.js for content classification, and optional Node.js backend.
+
+🔧 Build these features:
+Porn Detection & Blocking
+
+Use a large list of adult keywords/domains to block or redirect.
+
+Detect NSFW content using nsfwjs (TensorFlow.js model).
+
+Automatically blur or remove explicit images from any page.
+
+VPN Detection
+
+Use ipapi.co or similar IP-based services to detect if user is using a VPN.
+
+If VPN is detected, show a full-screen warning and restrict access.
+
+Optionally log these attempts with timestamps.
+
+Motivational Overlay / Redirect
+
+Replace blocked sites with custom motivational page/quote.
+
+Friendly UI that reminds the user of their goal to quit porn.
+
+Password-Protected Settings
+
+Allow user to enable "Strict Mode" that can’t be turned off without a passcode.
+
+Option to lock settings for a time period (e.g., 7-day challenge).
+
+Accountability Mode
+
+User can add an email of an accountability partner.
+
+Log and email them when the user tries to access blocked content or turns off protection.
+
+Platform Deployment
+
+Web App: Deploy on Vercel/Netlify.
+
+Chrome Extension: Build with manifest v3, background + content scripts.
+
+📂 File Structure:
+pgsql
+Copy
+Edit
+porn-blocker/
+├── extension/
+│   ├── background.js
+│   ├── content-script.js
+│   ├── popup.html
+│   └── manifest.json
+├── web-app/
+│   ├── public/
+│   ├── src/
+│   │   ├── App.js
+│   │   ├── vpn-check.js
+│   │   ├── nsfw-filter.js
+│   │   └── blocklist.js
+├── server/ (optional)
+│   ├── index.js
+│   └── logs.json
+🧠 Advanced Ideas (Optional for V2):
+Auto-update domain/block list from cloud
+
+User progress dashboard (days clean, attempts)
+
+Schedule-based blocking (e.g., work hours)
+
+Voice-based motivation (AI-powered)
+
+🎯 Goal:
+"Build a clean, motivating, and intelligent online porn blocker to help people fight addiction. It should detect VPN usage, filter explicit content using AI, protect settings with passwords, and optionally log/report activity to accountability partners. The UI should be minimal, peaceful, and mobile-friendly.
